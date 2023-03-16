@@ -3,9 +3,9 @@
 ## Step 1 : maven build
 	- Go to this folder "src/test/java"
 
-    ```java
+```java
           @SpringBootTest(classes = runnableclassname.class
-    ```
+```
 	build success
 
 ## Step 2: go to pom.xml
