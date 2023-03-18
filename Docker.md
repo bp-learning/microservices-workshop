@@ -31,6 +31,27 @@ ENTRYPOINT ["java","-jar","AccountTest-0.0.1-SNAPSHOT.jar"]
 
 	``` docker run -p 8081:8081 username/project name ```
 
+# Docker compose
+
+- Create a file docker-compose.yml 
+- in file write these lines according to your table name:
+```
+services:
+  CardDemo12:
+    image: abhishek8602/cardsdemo12
+    ports:
+      - "8081:8081"
+    networks:
+      - bank-network
+  AccountTest:
+    image: abhishek8602/accountdemo12
+    ports:
+      - "8080:8080"
+    networks:
+      - bank-network
+networks:
+  bank-network: {}
+ ``` 
 
 
 
