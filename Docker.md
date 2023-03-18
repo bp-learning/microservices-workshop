@@ -51,7 +51,12 @@ services:
       - bank-network
 networks:
   bank-network: {}
- ``` 
+ ```
+ - from command promt :
+ ```
+ docker-compose up
+ ```
+  
 
 
 
