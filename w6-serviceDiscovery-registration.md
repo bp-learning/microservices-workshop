@@ -65,5 +65,63 @@ eureka.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:${server
 
 ```
 
+# Feign Clients
+
+## step 1 : add dependency and add annotation @EnableFeignClients in main class 
+```
+        <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+```
+## step 2 : create a packge in.bank.accounts.service.client and create interface 
+```java
+package in.bank.accounts.service.client;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import in.bank.accounts.model.Cards;
+import in.bank.accounts.model.Customers;
+
+
+
+@FeignClient("cards")
+public interface CardsFeignClient {
+	 
+	@RequestMapping(method = RequestMethod.POST , value = "cards" , consumes = "application/json")
+	List<Cards> getCardDetails(@RequestBody Customers customer);
+}
+```
+
+
+## step 3 : add Cards class to accounts application 
+
+## step 4 : add CustomerDetails class in model package 
+```java 
+import java.util.List;
+
+public class CustomerDetails {
+	
+	private Accounts accounts;
+	private List<Cards> cards;
+	public Accounts getAccounts() {
+		return accounts;
+	}
+	public void setAccounts(Accounts accounts) {
+		this.accounts = accounts;
+	}
+	public List<Cards> getCards() {
+		return cards;
+	}
+	public void setCards(List<Cards> cards) {
+		this.cards = cards;
+	}
+	
+}
+```
 
 
