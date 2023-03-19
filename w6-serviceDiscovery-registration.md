@@ -42,3 +42,20 @@
 ```
 
  - Eureka ribbon : It is a cloud library that provides the client-side load balancing so to prevent we are using exclusions. 
+## step 3 : add application.properties
+```
+spring.application.name=eurekaserver
+spring.config.import=optional:configserver:http://localhost:8087/
+spring.cloud.loadbalancer.ribbon.enabled=false
+```
+
+## step 4 : create new file in git-config name as "eurekaserver.properties"
+```
+
+server.port = 8088
+eureka.instance.hostname=localhost
+eureka.client.registerWithEureka = false
+eureka.client.fetchRegistry = false
+eureka.client.serviceUr1.defaultZone=http://${eureka.instance.hostname}:${server.port}/eureka/
+
+```
