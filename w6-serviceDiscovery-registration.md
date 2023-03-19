@@ -23,3 +23,22 @@
 - Apache ZooKeeper
 - Consul
 
+## Step 1 : create mvc add few new dependencies
+- Eureka Server
+- Config Client 
+- Spring Boot Actuator
+## Step 2 : add this exclusions file inside eureka dependency
+```
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>spring-cloud-starter-ribbon</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.netflix.ribbon</groupId>
+					<artifactId>ribbon-eureka</artifactId>
+				</exclusion>
+			</exclusions>
+```
+
+ - Eureka ribbon : It is a cloud library that provides the client-side load balancing so to prevent we are using exclusions.
