@@ -1,0 +1,25 @@
+###  Microservices
+- microservices are a branch of independently running services.
+- Each services exposes an API and runs in a dedicated port of a server 
+
+
+### how to manage the interaction between microservices?
+
+## Service Discovery and Registration
+- to deal with the potential challenges, the concept called "Service Discovery and Registration" can be used 
+- It hepls us to locate and manage various instances of running microservices.
+### Service Discovery and Registration functioin works as follows:
+- A central repo of all network address of each registered microservices should be maintained.
+- Every new microservices instance or client that needs to be associated with this central repo should register its address with the server.
+- the server will periodically poll all its clients for their status.
+
+## Load balancer vs service discovery 
+
+## setting up service discovery 
+
+- In spring cloud, service discovery and registration can be implemented using many open sources.
+### some of them are given below :
+- Eureka Service(From Netfilx)
+- Apache ZooKeeper
+- Consul
+
