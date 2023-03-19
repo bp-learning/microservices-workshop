@@ -27,7 +27,10 @@
 - Eureka Server
 - Config Client 
 - Spring Boot Actuator
-## Step 2 : add this exclusions file inside eureka dependency
+## step 2 : add annotation in main class
+- @EnableEurekaServer
+## Step 3 : add this exclusions file inside eureka dependency
+
 ```
 			<exclusions>
 				<exclusion>
@@ -42,20 +45,25 @@
 ```
 
  - Eureka ribbon : It is a cloud library that provides the client-side load balancing so to prevent we are using exclusions. 
-## step 3 : add application.properties
+## step 4 : add application.properties
 ```
 spring.application.name=eurekaserver
-spring.config.import=optional:configserver:http://localhost:8087/
+spring.config.import=configserver:http://localhost:8087/
 spring.cloud.loadbalancer.ribbon.enabled=false
+spring.freemarker.template-loader-path= classpath:/templates/
+spring.freemarker.prefer-file-system-access= false
 ```
 
-## step 4 : create new file in git-config name as "eurekaserver.properties"
+## step 5 : create new file in git-config name as "eurekaserver.properties"
 ```
 
 server.port = 8088
 eureka.instance.hostname=localhost
 eureka.client.registerWithEureka = false
 eureka.client.fetchRegistry = false
-eureka.client.serviceUr1.defaultZone=http://${eureka.instance.hostname}:${server.port}/eureka/
+eureka.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:${server.port}/eureka/
 
 ```
+
+
+
